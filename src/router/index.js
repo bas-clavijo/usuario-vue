@@ -6,7 +6,7 @@ import UsuarioView from '../views/UsuarioView.vue'
 
 const routes = [
   {
-    path: '/',
+    path: '/home',
     name: 'home',
     component: HomeView
   },
