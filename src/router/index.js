@@ -10,6 +10,26 @@ const routes = [
     name: 'home',
     component: HomeView
   },
+
+  {
+    path: '/createUsuario',
+    name: 'createUsuario',
+    component: UsuarioNew
+  },
+
+  {
+    path: '/editUsuario/:id',
+    name: 'editUsuario',
+    component: UsuarioEdit
+  },
+
+  {
+    path: '/viewUsuario/:id',
+    name: 'viewUsuario',
+    component: UsuarioView
+  },
+
+
   {
     path: '/about',
     name: 'about',
