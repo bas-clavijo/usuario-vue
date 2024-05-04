@@ -1,6 +1,6 @@
 <template>
-  <div class="home">
-    <h1>Home</h1>
+  <div class="p-3">
+    <h2>test home</h2>
   </div>
 </template>
 <script>
