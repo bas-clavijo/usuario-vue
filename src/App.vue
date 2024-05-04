@@ -46,15 +46,15 @@
         </div>
       </div>
       <!--contenido -->
-      <router-view />
+      <div class="container-fluid">
+        <router-view />
+      </div>
     </div>
   </div>
 
 
 
-  <div class="container-fluid">
-    <router-view />
-  </div>
+   
 </template>
 
 <style>
