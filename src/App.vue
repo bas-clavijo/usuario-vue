@@ -43,11 +43,16 @@
       </ul>
     </div>
   </div>
-  
   <!-- Contenido principal -->
+  <div class="col offset-md-2 mt-5">
+    <router-view />
+  </div>
+
+  <!--POSICION FIJA
   <div class="col offset-md-2 mt-5 position-fixed">
     <router-view />
   </div>
+  -->
 </template>
 
 <style>
