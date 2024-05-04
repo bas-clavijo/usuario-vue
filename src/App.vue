@@ -17,19 +17,7 @@
       </div>
     </div>
   </nav>
-
-  <!-- Menú lateral -->
-  <!--  <div class="d-flex" id="wrapper">
-         Sidebar 
-        <div class="bg-light border-right" id="sidebar-wrapper">
-            <div class="list-group list-group-flush">
-                <router-link to="/home" class="list-group-item list-group-item-action">Menú</router-link>
-                <router-link to="/tabla" class="list-group-item list-group-item-action">Tabla</router-link>
-                <router-link to="/createUsuario" class="list-group-item list-group-item-action">Formulario</router-link>
-            </div>
-        </div>
-    </div>
--->
+  
   <!-- Menú lateral 2 -->
   <div class="container-fluid">
     <div class="row flex-nowrap">
@@ -57,12 +45,8 @@
           </ul>
         </div>
       </div>
-
-      <!--contenido-->
-      <div class="p-3">
-        <h2>Contenido</h2>
-      </div>
-       
+      <!--contenido -->
+      <router-view />
     </div>
   </div>
 
