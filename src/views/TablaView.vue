@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div class="col-lg-8 offset-lg-2">
+    <div class="col-lg-10 offset-lg-1">
       <div class="table-responsive">
         <table class="table table-bordered table-hover">
           <thead>
@@ -12,17 +12,16 @@
               <th>Fecha de creacion</th>
               <th>Estado</th>
               <th>Opciones</th>
-              <th></th>
             </tr>
           </thead>
           <tbody class="table-group-divider" id="contenido">
             <tr v-if="this.cargando">
-              <td colspan="8"><h3>Cargando...</h3></td>
+              <td colspan="7"><h3>Cargando...</h3></td>
             </tr>
             <tr v-else v-for="user, i in this.usuarios" :key="user.id">
               <td v-text="(i+1)"></td>
               <td v-text="user.id"></td>
-              <td v-text="foto"></td>
+              <td v-text="user.foto"></td>
               <td v-text="user.nombre"></td>
               <td v-text="new Date(user.created_at).toLocaleDateString()"></td>
               <td v-text="user.estado ? 'Activo' : 'Inactivo'"></td> 
@@ -30,6 +29,14 @@
                 <router-link :to="{path:'view/'+user.id}" class="btn btn-info">
                   <i class="fa-solid fa-eye"></i>
                 </router-link>
+                &nbsp;
+                <router-link :to="{path:'edit/'+user.id}" class="btn btn-warning">
+                  <i class="fa-solid fa-edit"></i>
+                </router-link>
+                &nbsp;
+                <button class="btn btn-danger">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
               </td>
             </tr>
           </tbody>
