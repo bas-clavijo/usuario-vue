@@ -19,6 +19,17 @@
             <tr v-if="this.cargando">
               <td colspan="8"><h3>Cargando...</h3></td>
             </tr>
+            <tr v-else v-for="user, i in this.usuarios" :key="user.id">
+              <td v-text="(i+1)"></td>
+              <td v-text="user.id"></td>
+              <td v-text="foto"></td>
+              <td v-text="user.nombre"></td>
+              <td v-text="user.created_at"></td>
+              <td v-text="user.estado"></td>
+              <td>
+
+              </td>
+            </tr>
           </tbody>
         </table>
 
@@ -36,6 +47,20 @@
       return{
         usuarios:null, 
         cargando:false
+      }
+    },
+    mounted(){
+      this.getUsuarios();
+    },
+    methods:{
+      getUsuarios(){
+        this.cargando = true;
+        axios.get('http://busquedausuario.test/api/v1/usuarios').then(
+          res =>{
+            this.usuarios = res.data;
+            this.cargando = false;
+          }
+        );
       }
     }
   }
