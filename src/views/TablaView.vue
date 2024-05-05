@@ -21,7 +21,10 @@
             <tr v-else v-for="user, i in this.usuarios" :key="user.id">
               <td v-text="(i+1)"></td>
               <td v-text="user.id"></td>
-              <td v-text="user.foto"></td>
+              <td>
+                <img v-if="user.foto" style="width: 150px !important;" :src="user.foto" class="img-thumbnail" alt="">
+                <img v-else="user.foto" height="30" :src="require('@/assets/usuario.png')" class="img-thumbnail" alt="">
+              </td>
               <td v-text="user.nombre"></td>
               <td v-text="new Date(user.created_at).toLocaleDateString()"></td>
               <td v-text="user.estado ? 'Activo' : 'Inactivo'"></td> 
