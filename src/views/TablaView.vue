@@ -24,10 +24,12 @@
               <td v-text="user.id"></td>
               <td v-text="foto"></td>
               <td v-text="user.nombre"></td>
-              <td v-text="user.created_at"></td>
-              <td v-text="user.estado"></td>
+              <td v-text="new Date(user.created_at).toLocaleDateString()"></td>
+              <td v-text="user.estado ? 'Activo' : 'Inactivo'"></td> 
               <td>
-
+                <router-link :to="{path:'view/'+user.id}" class="btn btn-info">
+                  <i class="fa-solid fa-eye"></i>
+                </router-link>
               </td>
             </tr>
           </tbody>
