@@ -14,11 +14,11 @@ export function mostrarAlerta(titulo,icono,foco=''){
     });
 }
 
-export function confirmar(Url,id,titulo,mensaje){
+export function confirmar(urlConSlash,id,titulo,mensaje,icono){
 
-    var url = Url+id;
+    var url = urlConSlash+id;
     const swalWithBoostrapButton = Swal.mixin({
-        customClass:{confirmButton:'btn btn-succes me-3', cancelButton:'btn btn-danger'},
+        customClass:{confirmButton:'btn btn-succes me-3', cancelButton:'btn btn-danger'}
     });
 
     swalWithBoostrapButton.fire({
@@ -35,12 +35,6 @@ export function confirmar(Url,id,titulo,mensaje){
             }
         });
 
-    Swal.fire({
-        title:titulo,
-        icon:icono,
-        customClass:{confirmButton:'btn btn-primary', popup:'animated zoonIn'},
-        buttonsStyling:false
-    });
 }
 
 export function enviarSolicitud(metodo,parametros,url,mensaje){
