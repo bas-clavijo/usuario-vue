@@ -31,11 +31,18 @@
             
             <!-- Columna para la imagen -->
             <div class="col-md-6 d-flex justify-content-center align-items-center">
-              <div class="d-grid gap-2 col-6 mx-auto">
-                <img v-if="this.foto" height="100" :src="this.foto" id="fotoimg" class="img-thumbnail" alt="">
-                <img v-else height="100" :src="require('@/assets/usuario.png')" class="img-thumbnail" id="fotoimg" alt="">
+              <div class="text-center">
+                  <img v-if="this.foto" height="200" :src="this.foto" id="fotoimg" class="img-thumbnail mb-3" alt="">
+                  <img v-else height="200" :src="require('@/assets/usuario.png')" class="img-thumbnail mb-3" id="fotoimg" alt="">
+                  <input type="file" accept="image/png, image/jpeg, image/gif" class="form-control mb-3">
               </div>
-            </div>
+          </div>
+
+          <!--Fila para los botones-->
+          <div class="d-grid col-6 mx-auto mb-3">
+            <button class="btn btn-success"><i class="fa-solid fa-floppy-disk"></i> Guardar</button>
+          </div>
+
           </form>
         </div>
       </div>
