@@ -37,7 +37,7 @@
                   <i class="fa-solid fa-edit"></i>
                 </router-link>
                 &nbsp;
-                <button class="btn btn-danger">
+                <button class="btn btn-danger" v-on:click="$event => eliminarUsuarios(user.id,user.nombre)">
                   <i class="fa-solid fa-trash"></i>
                 </button>
               </td>
@@ -53,6 +53,7 @@
 
 <script>
   import axios from 'axios';
+  import {confirmar,} from '../funciones'
 
   export default{
     data(){
@@ -73,6 +74,10 @@
             this.cargando = false;
           }
         );
+      },
+      eliminarUsuarios(id,nombre){
+        confirmar('http://busquedausuario.test/api/v1/usuarios/',id,'Eliminar Usuario','¿Esta seguro de querer eliminar a'+nombre+'?');
+        this.cargando=false;
       }
     }
   }
