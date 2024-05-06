@@ -76,7 +76,7 @@
         );
       },
       eliminarUsuarios(id,nombre){
-        confirmar('http://busquedausuario.test/api/v1/usuarios/',id,'Eliminar Usuario','¿Esta seguro de querer eliminar a'+nombre+'?');
+        confirmar('http://busquedausuario.test/api/v1/usuarios/',id,'Eliminar Usuario','¿Esta seguro de querer eliminar a'+' '+nombre+'?');
         this.cargando=false;
       }
     }
