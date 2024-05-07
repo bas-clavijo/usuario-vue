@@ -34,7 +34,7 @@
               <div class="text-center">
                   <img v-if="this.foto" height="200" :src="this.foto" id="fotoimg" class="img-thumbnail mb-3" alt="">
                   <img v-else height="200" :src="require('@/assets/usuario.png')" class="img-thumbnail mb-3" id="fotoimg" alt="">
-                  <input type="file" accept="image/png, image/jpeg, image/gif" class="form-control mb-3">
+                  <input type="file" v-on:change="prevFoto" accept="image/png, image/jpeg, image/gif" class="form-control mb-3">
               </div>
           </div>
 
@@ -52,7 +52,7 @@
 
  
 <script>
-  import {confirmar,} from '../funciones'
+  import {mostrarAlerta, enviarSolicitud} from '../funciones'
 
   export default{
     data(){
@@ -63,6 +63,7 @@
         cargo:'',
         contraseña:'',
         confContraseña:'',
+        url:'http://busquedausuario.test/api/v1/usuarios',
         cargando:false
       }
     },
@@ -71,6 +72,17 @@
       guardar(){
         this.cargando = true;
         
+      },
+      prevFoto(event){
+        var reader = new FileReader();
+        reader.readAsDataURL(event.target.files[0]);
+        reader.onload = function(){
+          var miFoto = document.getElementById('fotoimg');
+          miFoto.src = reader.result;
+          this.foto = miFoto.src; 
+
+
+        }
       }
     }
   }
