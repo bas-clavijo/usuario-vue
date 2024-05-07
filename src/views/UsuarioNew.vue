@@ -95,7 +95,12 @@ export default {
       } else if (this.confContraseña.trim()=== '') {
         mostrarAlerta('Confirme su Contraseña', 'warning', 'confContraseña');
       }else{
-        
+        var parametros = {nombre:this.nombre.trim(), correo:this.correo.trim(), 
+          correoconfirmar:this.correoconfirmar.trim(), cargo:this.cargo.trim(),
+          contraseña:this.contraseña.trim(), confContraseña:this.confContraseña.trim(),
+          foto:this.foto.trim()
+        }
+        enviarSolicitud('POST',parametros,this.url,'Usuario registrado');
       }
 
     },
