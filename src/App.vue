@@ -2,7 +2,10 @@
   <!-- Encabezado -->
   <nav class="navbar bg-body-secondary fixed-top">
     <div class="container-fluid">
-      <a class="navbar-brand">TEST NEERING</a>
+      <div class="d-flex align-items-center">
+        <img src="@/assets/logo.png" width="34">
+        <a class="navbar-brand ms-2">TEST NEERING</a>
+      </div>
 
       <div class="d-flex align-items-center">
         <!-- Icono de persona -->
