@@ -48,7 +48,7 @@
 
             <!--Fila para los botones-->
             <div class="d-grid col-6 mx-auto mb-3">
-              <button class="btn btn-warning"><i class="fa-solid fa-refresh"></i> Actualizar</button>
+              <button class="btn btn-success"><i class="fa-solid fa-floppy-disk"></i> Guardar</button>
             </div>
 
           </form>
@@ -58,6 +58,7 @@
   </div>
 </template>
 
+
 <script>
 import { mostrarAlerta, enviarSolicitud } from '../funciones';
 import { useRoute } from 'vue-router';
@@ -66,67 +67,65 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      id: 0,
+      id:0,
       nombre: '',
       correo: '',
       correoconfirmar: '',
       cargo: '',
       contraseña: '',
       confContraseña: '',
-      foto: '',
+      foto:'',
       url: 'http://busquedausuario.test/api/v1/usuarios',
       cargando: false
     }
   },
-  mounted() {
+  mounted(){
     const route = useRoute();
     this.id = route.params.id;
-    this.url += '/' + this.id;
+    this.url += '/'+this.id;
     this.getUsuario();
   },
 
   methods: {
-    getUsuario() {
+    getUsuario(){
       axios.get(this.url).then(
-        res => {
+        res=>{
           this.nombre = res.data.data.nombre;
           this.correo = res.data.data.correo;
+          this.contraseña = res.data.data.contraseña;
           this.correoconfirmar = res.data.data.correoconfirmar;
           this.cargo = res.data.data.cargo;
-          this.contraseña = res.data.data.contraseña;
           this.confContraseña = res.data.data.confContraseña;
           this.foto = res.data.data.foto;
         }
       );
     },
-    actualizar(event) {
+    actualizar() {
       event.preventDefault();
       var miFoto = document.getElementById('fotoimg');
       this.foto = miFoto.src;
 
-      if (this.nombre.trim() === '') {
+      if (this.nombre.trim()=== '') {
         mostrarAlerta('Ingrese un Nombre', 'warning', 'nombre');
-      } else if (this.correo.trim() === '') {
+      } else if (this.correo.trim()=== '') {
         mostrarAlerta('Ingrese un Correo', 'warning', 'correo');
-      } else if (this.correoconfirmar.trim() === '') {
+      } else if (this.correoconfirmar.trim()=== '') {
         mostrarAlerta('Confirme su Correo', 'warning', 'correoconfirmar');
-      } else if (this.cargo.trim() === '') {
+      } else if (this.cargo.trim()=== '') {
         mostrarAlerta('Ingrese un Cargo', 'warning', 'cargo');
-      } else if (this.contraseña.trim() === '') {
+      } else if (this.contraseña.trim()=== '') {
         mostrarAlerta('Ingrese una Contraseña', 'warning', 'contraseña');
-      } else if (this.confContraseña.trim() === '') {
+      } else if (this.confContraseña.trim()=== '') {
         mostrarAlerta('Confirme su Contraseña', 'warning', 'confContraseña');
-      } else {
-        var parametros = {
-          nombre: this.nombre.trim(),
-          correo: this.correo.trim(),
-          correoconfirmar: this.correoconfirmar.trim(),
-          contraseña: this.contraseña.trim(),
-          confContraseña: this.confContraseña.trim(),
-          foto: this.foto.trim()
+      }else{
+        var parametros = {nombre:this.nombre.trim(), correo:this.correo.trim(), 
+          correoconfirmar:this.correoconfirmar.trim(), cargo:this.cargo.trim(),
+          contraseña:this.contraseña.trim(), confContraseña:this.confContraseña.trim(),
+          foto:this.foto.trim()
         }
-        enviarSolicitud('PUT', parametros, this.url, 'Usuario Actualizado');
+        enviarSolicitud('POST',parametros,this.url,'Usuario registrado');
       }
+
     },
     prevFoto(event) {
       var reader = new FileReader();
@@ -142,4 +141,3 @@ export default {
   }
 }
 </script>
-
