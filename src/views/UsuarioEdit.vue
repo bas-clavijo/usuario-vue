@@ -6,7 +6,7 @@
           Editar usuario
         </div>
         <div class="card-body">
-          <form v-on:submit="atualizar" class="row g-2">
+          <form v-on:submit="actualizar" class="row g-2">
             <!-- Columna para los campos de entrada de datos del usuario -->
             <div class="col-md-6">
               <div class="mb-3">
@@ -14,7 +14,7 @@
                   class="form-control">
               </div>
               <div class="mb-3">
-                <input type="emal" v-model="correo" id="correo" placeholder="Correo electrónico" required maxlength="50"
+                <input type="email" v-model="correo" id="correo" placeholder="Correo electrónico" required maxlength="50"
                   class="form-control">
               </div>
               <div class="mb-3">
