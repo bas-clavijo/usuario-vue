@@ -29,11 +29,11 @@
               <td v-text="new Date(user.created_at).toLocaleDateString()"></td>
               <td v-text="user.estado ? 'Activo' : 'Inactivo'"></td> 
               <td>
-                <router-link :to="{path:'view/'+user.id}" class="btn btn-info">
+                <router-link :to="{path:'viewUsuario/'+user.id}" class="btn btn-info">
                   <i class="fa-solid fa-eye"></i>
                 </router-link>
                 &nbsp;
-                <router-link :to="{path:'edit/'+user.id}" class="btn btn-warning">
+                <router-link :to="{path:'editUsuario/'+user.id}" class="btn btn-warning">
                   <i class="fa-solid fa-edit"></i>
                 </router-link>
                 &nbsp;
