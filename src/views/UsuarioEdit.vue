@@ -1,6 +1,140 @@
 <template>
-    <div class="about">
-      <h1>usuario edit</h1>
+  <div class="row mt-3">
+    <div class="col-lg-10 offset-lg-1">
+      <div class="card">
+        <div class="card-header bg-dark text-white text-center">
+          Editar usuario
+        </div>
+        <div class="card-body">
+          <form v-on:submit="atualizar" class="row g-2">
+            <!-- Columna para los campos de entrada de datos del usuario -->
+            <div class="col-md-6">
+              <div class="mb-3">
+                <input type="text" v-model="nombre" id="nombre" placeholder="Nombre completo" required maxlength="50"
+                  class="form-control">
+              </div>
+              <div class="mb-3">
+                <input type="emal" v-model="correo" id="correo" placeholder="Correo electrónico" required maxlength="50"
+                  class="form-control">
+              </div>
+              <div class="mb-3">
+                <input type="email" v-model="correoconfirmar" id="correoconfirmar"
+                  placeholder="Confirmar Correo electrónico" required maxlength="50" class="form-control">
+              </div>
+              <div class="mb-3">
+                <input type="text" v-model="cargo" id="cargo" placeholder="Cargo" required maxlength="50"
+                  class="form-control">
+              </div>
+              <div class="mb-3">
+                <input type="password" v-model="contraseña" id="contraseña" placeholder="Contraseña" required
+                  maxlength="50" class="form-control">
+              </div>
+              <div class="mb-3">
+                <input type="password" v-model="confContraseña" id="confContraseña" placeholder="Confirmar contraseña"
+                  required maxlength="50" class="form-control">
+              </div>
+            </div>
+
+            <!-- Columna para la imagen -->
+            <div class="col-md-6 d-flex justify-content-center align-items-center">
+              <div class="text-center">
+                <img v-if="this.foto" height="200" :src="this.foto" id="fotoimg" class="img-thumbnail mb-3" alt="">
+                <img v-else height="200" :src="require('@/assets/usuario.png')" class="img-thumbnail mb-3" id="fotoimg"
+                  alt="">
+                <input type="file" v-on:change="prevFoto" accept="image/png, image/jpeg, image/gif"
+                  class="form-control mb-3">
+              </div>
+            </div>
+
+            <!--Fila para los botones-->
+            <div class="d-grid col-6 mx-auto mb-3">
+              <button class="btn btn-warning"><i class="fa-solid fa-refresh"></i> Actualizar</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
     </div>
-  </template>
-  
+  </div>
+</template>
+
+<script>
+import { mostrarAlerta, enviarSolicitud } from '../funciones';
+import { useRoute } from 'vue-router';
+import axios from 'axios';
+
+export default {
+  data() {
+    return {
+      id: 0,
+      nombre: '',
+      correo: '',
+      correoconfirmar: '',
+      cargo: '',
+      contraseña: '',
+      confContraseña: '',
+      foto: '',
+      url: 'http://busquedausuario.test/api/v1/usuarios',
+      cargando: false
+    }
+  },
+  mounted() {
+    const route = useRoute();
+    this.id = route.params.id;
+    this.url += '/' + this.id;
+    this.getUsuario();
+  },
+
+  methods: {
+    getUsuario() {
+      axios.get(this.url).then(
+        res => {
+          this.nombre = res.data.data.nombre;
+          this.correo = res.data.data.correo;
+          this.cargo = res.data.data.cargo;
+          this.contraseña = res.data.data.contraseña;
+          this.foto = res.data.data.foto;
+        }
+      );
+    },
+    actualizar(event) {
+      event.preventDefault();
+      var miFoto = document.getElementById('fotoimg');
+      this.foto = miFoto.src;
+
+      if (this.nombre.trim() === '') {
+        mostrarAlerta('Ingrese un Nombre', 'warning', 'nombre');
+      } else if (this.correo.trim() === '') {
+        mostrarAlerta('Ingrese un Correo', 'warning', 'correo');
+      } else if (this.correoconfirmar.trim() === '') {
+        mostrarAlerta('Confirme su Correo', 'warning', 'correoconfirmar');
+      } else if (this.cargo.trim() === '') {
+        mostrarAlerta('Ingrese un Cargo', 'warning', 'cargo');
+      } else if (this.contraseña.trim() === '') {
+        mostrarAlerta('Ingrese una Contraseña', 'warning', 'contraseña');
+      } else if (this.confContraseña.trim() === '') {
+        mostrarAlerta('Confirme su Contraseña', 'warning', 'confContraseña');
+      } else {
+        var parametros = {
+          nombre: this.nombre.trim(),
+          correo: this.correo.trim(),
+          contraseña: this.contraseña.trim(),
+          foto: this.foto.trim()
+        }
+        enviarSolicitud('PUT', parametros, this.url, 'Usuario Actualizado');
+      }
+    },
+    prevFoto(event) {
+      var self = this; // Capturar el contexto actual
+      var reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = function () {
+        var miFoto = document.getElementById('fotoimg');
+        miFoto.src = reader.result;
+        self.foto = miFoto.src; // Usar la variable self en lugar de this
+      }
+    }
+  }
+}
+</script>
+
