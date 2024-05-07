@@ -14,7 +14,7 @@
                   class="form-control">
               </div>
               <div class="mb-3">
-                <input type="emal" v-model="correo" id="correo" placeholder="Correo electrónico" required maxlength="50"
+                <input type="email" v-model="correo" id="correo" placeholder="Correo electrónico" required maxlength="50"
                   class="form-control">
               </div>
               <div class="mb-3">
