@@ -48,7 +48,7 @@
 
             <!--Fila para los botones-->
             <div class="d-grid col-6 mx-auto mb-3">
-              <button class="btn btn-success"><i class="fa-solid fa-floppy-disk"></i> Guardar</button>
+              <button class="btn btn-warning"><i class="fa-solid fa-refresh"></i> Actualizar cambios</button>
             </div>
 
           </form>
@@ -57,7 +57,6 @@
     </div>
   </div>
 </template>
-
 
 <script>
 import { mostrarAlerta, enviarSolicitud } from '../funciones';
@@ -118,14 +117,18 @@ export default {
       } else if (this.confContraseña.trim()=== '') {
         mostrarAlerta('Confirme su Contraseña', 'warning', 'confContraseña');
       }else{
-        var parametros = {nombre:this.nombre.trim(), correo:this.correo.trim(), 
-          correoconfirmar:this.correoconfirmar.trim(), cargo:this.cargo.trim(),
-          contraseña:this.contraseña.trim(), confContraseña:this.confContraseña.trim(),
-          foto:this.foto.trim()
+        const parametros = {
+          nombre: this.nombre.trim(),
+          correo: this.correo.trim(),
+          correoconfirmar: this.correoconfirmar.trim(),
+          cargo: this.cargo.trim(),
+          contraseña: this.contraseña.trim(),
+          confContraseña: this.confContraseña.trim(),
+          foto: this.foto.trim(),
+          estado: true 
         }
-        enviarSolicitud('POST',parametros,this.url,'Usuario registrado');
+        enviarSolicitud('PUT', parametros, this.url, 'Usuario Actualizado');
       }
-
     },
     prevFoto(event) {
       var reader = new FileReader();
@@ -134,8 +137,6 @@ export default {
         var miFoto = document.getElementById('fotoimg');
         miFoto.src = reader.result;
         this.foto = miFoto.src;
-
-
       }
     }
   }
