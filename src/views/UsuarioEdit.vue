@@ -91,8 +91,10 @@ export default {
         res => {
           this.nombre = res.data.data.nombre;
           this.correo = res.data.data.correo;
+          this.correoconfirmar = res.data.data.correoconfirmar;
           this.cargo = res.data.data.cargo;
           this.contraseña = res.data.data.contraseña;
+          this.confContraseña = res.data.data.confContraseña;
           this.foto = res.data.data.foto;
         }
       );
@@ -118,20 +120,23 @@ export default {
         var parametros = {
           nombre: this.nombre.trim(),
           correo: this.correo.trim(),
+          correoconfirmar: this.correoconfirmar.trim(),
           contraseña: this.contraseña.trim(),
+          confContraseña: this.confContraseña.trim(),
           foto: this.foto.trim()
         }
         enviarSolicitud('PUT', parametros, this.url, 'Usuario Actualizado');
       }
     },
     prevFoto(event) {
-      var self = this; // Capturar el contexto actual
       var reader = new FileReader();
       reader.readAsDataURL(event.target.files[0]);
       reader.onload = function () {
         var miFoto = document.getElementById('fotoimg');
         miFoto.src = reader.result;
-        self.foto = miFoto.src; // Usar la variable self en lugar de this
+        this.foto = miFoto.src;
+
+
       }
     }
   }
