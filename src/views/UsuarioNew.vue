@@ -71,6 +71,7 @@ export default {
       cargo: '',
       contraseña: '',
       confContraseña: '',
+      foto:'';
       url: 'http://busquedausuario.test/api/v1/usuarios',
       cargando: false
     }
