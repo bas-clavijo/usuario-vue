@@ -19,11 +19,7 @@
               </div>
               <div>
                 <h1>¡Bienvenidos a Neering!</h1>
-                <h4>Desarrolla esta plataforma a la perfección.</h4>
-              </div>
-
-              <div>
-                <label for="">Iniciar sesión</label> <label for="">Registrarse</label>
+                <h5>Desarrolla esta plataforma a la perfección.</h5>
               </div>
               <div class="mb-3">
                 <input type="text" id="nombre" placeholder="Usuario" class="form-control">
@@ -33,7 +29,7 @@
               </div>
               <!-- Botón para ingresar -->
               <div class="col-md-100 d-flex justify-content-end align-items-center py-2">
-                <router-link :to="{ path: '/tabla' }" class="btn btn-info">
+                <router-link :to="{ path: '/tabla' }" class="btn btn-success">
                   <i class="fa-solid fa-arrow-left"></i> Ingresar
                 </router-link>
               </div>
