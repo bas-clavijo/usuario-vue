@@ -1,5 +1,5 @@
 <template>
-  <div class="col offset py-4 ">
+  <div class="col offset py-4">
     <div class="col-lg-10 offset-lg-1 py-5">
       <div class="card">
         <div class="card-body">
@@ -13,22 +13,22 @@
             </div>
 
             <!-- Columna para los campos de entrada de datos del usuario -->
-            <div class="col-lg-5 offset-lg-2 py-5 text-center">
-              <div>
+            <div class="col-lg-5 offset-lg-2 py-5">
+              <div class="text-center mb-4">
                 <img height="50" width="50" :src="require('@/assets/logo.png')" alt="">
               </div>
-              <div>
-                <h1>¡Bienvenidos a Neering!</h1>
-                <h5>Desarrolla esta plataforma a la perfección.</h5>
+              <div class="mb-4">
+                <h1 class="text-center">¡Bienvenidos a Neering!</h1>
+                <h5 class="text-center">Desarrolla esta plataforma a la perfección.</h5>
               </div>
               <div class="mb-3">
                 <input type="text" id="nombre" placeholder="Usuario" class="form-control">
               </div>
-              <div>
+              <div class="mb-3">
                 <input type="password" id="contraseña" placeholder="Contraseña" class="form-control">
               </div>
               <!-- Botón para ingresar -->
-              <div class="col-md-100 d-flex justify-content-end align-items-center py-2">
+              <div class="d-grid gap-2">
                 <router-link :to="{ path: '/tabla' }" class="btn btn-success">
                   <i class="fa-solid fa-arrow-left"></i> Ingresar
                 </router-link>
@@ -42,5 +42,4 @@
 </template>
 
 <script>
-
 </script>
