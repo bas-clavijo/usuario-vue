@@ -48,6 +48,6 @@
 
 <style>
 .nav-pills li a:hover{
-  background-color: white;
+  background-color: rgb(173, 171, 171);
 }
 </style>

@@ -7,18 +7,7 @@
           <div class="container-fluid">
             <a class="navbar-brand">Listado de usuarios</a>
             <div class="d-flex">
-              <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                  data-bs-toggle="dropdown" aria-expanded="false">
-                  Opciones de búsqueda
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <li><a class="dropdown-item" href="#">Estado Activo</a></li>
-                  <li><a class="dropdown-item" href="#">Estado Inactivo</a></li>
-                </ul>
-              </div>
-
-              <div class="col-md-5 d-flex justify-content-end align-items-center">
+              <div class="justify-content-end align-items-center">
                 <router-link :to="{ path: '/createUsuario' }" class="btn btn-success">
                   <i class="fa-solid fa-plus"></i> Agregar
                 </router-link>
