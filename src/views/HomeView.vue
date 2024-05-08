@@ -1,6 +1,6 @@
 <template>
-  <div class="col offset mt-5 ">
-    <div class="col-lg-12">
+  <div class="col offset py-4 ">
+    <div class="col-lg-10 offset-lg-1 py-5">
       <div class="card">
         <div class="card-body">
           <div class="row">
