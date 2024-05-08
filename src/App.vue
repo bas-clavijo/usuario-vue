@@ -39,11 +39,6 @@
     <router-view />
   </div>
 
-  <!--POSICION FIJA
-  <div class="col offset-md-2 mt-5 position-fixed">
-    <router-view />
-  </div>
-  -->
 </template>
 
 <style>
