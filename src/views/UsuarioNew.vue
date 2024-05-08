@@ -14,8 +14,8 @@
                   class="form-control">
               </div>
               <div class="mb-3">
-                <input type="email" v-model="correo" id="correo" placeholder="Correo electrónico" required maxlength="50"
-                  class="form-control">
+                <input type="email" v-model="correo" id="correo" placeholder="Correo electrónico" required
+                  maxlength="50" class="form-control">
               </div>
               <div class="mb-3">
                 <input type="email" v-model="correoconfirmar" id="correoconfirmar"
@@ -47,9 +47,18 @@
             </div>
 
             <!--Fila para los botones-->
-            <div class="d-grid col-6 mx-auto mb-3">
-              <button class="btn btn-success"><i class="fa-solid fa-floppy-disk"></i> Guardar</button>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="d-flex justify-content-between mb-4 btn-lg">
+                  <button class="btn btn-success"><i class="fa-solid fa-floppy-disk"></i> Guardar</button>
+
+                  <router-link :to="{ path: '/tabla' }" class="btn btn-danger">
+                    <i class="fa-solid fa-ban"></i> Cancelar
+                  </router-link>
+                </div>
+              </div>
             </div>
+
 
           </form>
         </div>
@@ -71,7 +80,7 @@ export default {
       cargo: '',
       contraseña: '',
       confContraseña: '',
-      foto:'',
+      foto: '',
       url: 'http://busquedausuario.test/api/v1/usuarios',
       cargando: false
     }
@@ -83,25 +92,26 @@ export default {
       var miFoto = document.getElementById('fotoimg');
       this.foto = miFoto.src;
 
-      if (this.nombre.trim()=== '') {
+      if (this.nombre.trim() === '') {
         mostrarAlerta('Ingrese un Nombre', 'warning', 'nombre');
-      } else if (this.correo.trim()=== '') {
+      } else if (this.correo.trim() === '') {
         mostrarAlerta('Ingrese un Correo', 'warning', 'correo');
-      } else if (this.correoconfirmar.trim()=== '') {
+      } else if (this.correoconfirmar.trim() === '') {
         mostrarAlerta('Confirme su Correo', 'warning', 'correoconfirmar');
-      } else if (this.cargo.trim()=== '') {
+      } else if (this.cargo.trim() === '') {
         mostrarAlerta('Ingrese un Cargo', 'warning', 'cargo');
-      } else if (this.contraseña.trim()=== '') {
+      } else if (this.contraseña.trim() === '') {
         mostrarAlerta('Ingrese una Contraseña', 'warning', 'contraseña');
-      } else if (this.confContraseña.trim()=== '') {
+      } else if (this.confContraseña.trim() === '') {
         mostrarAlerta('Confirme su Contraseña', 'warning', 'confContraseña');
-      }else{
-        var parametros = {nombre:this.nombre.trim(), correo:this.correo.trim(), 
-          correoconfirmar:this.correoconfirmar.trim(), cargo:this.cargo.trim(),
-          contraseña:this.contraseña.trim(), confContraseña:this.confContraseña.trim(),
-          foto:this.foto.trim()
+      } else {
+        var parametros = {
+          nombre: this.nombre.trim(), correo: this.correo.trim(),
+          correoconfirmar: this.correoconfirmar.trim(), cargo: this.cargo.trim(),
+          contraseña: this.contraseña.trim(), confContraseña: this.confContraseña.trim(),
+          foto: this.foto.trim()
         }
-        enviarSolicitud('POST',parametros,this.url,'Usuario registrado');
+        enviarSolicitud('POST', parametros, this.url, 'Usuario registrado');
       }
 
     },
