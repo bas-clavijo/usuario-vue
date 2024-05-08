@@ -41,7 +41,7 @@
               <td v-text="(i + 1)"></td>
               <td v-text="user.id"></td>
               <td>
-                <img v-if="user.foto" style="width: 150px !important;" :src="user.foto" class="img-thumbnail" alt="">
+                <img v-if="user.foto" style="width: 50px !important;" :src="user.foto" class="img-thumbnail" alt="">
                 <img v-else="user.foto" style="width: 50px !important;" :src="require('@/assets/usuario.png')"
                   class="img-thumbnail" alt="">
               </td>
