@@ -1,5 +1,5 @@
 <template>
-  <div class="col offset mt-5">
+  <div class="col offset mt-5 ">
     <div class="col-lg-12">
       <div class="card">
         <div class="card-body">
@@ -32,13 +32,12 @@
                 <input type="password" id="contraseña" placeholder="Contraseña" class="form-control">
               </div>
               <!-- Botón para ingresar -->
-              <div class="col-md-100 d-flex justify-content-end align-items-center">
+              <div class="col-md-100 d-flex justify-content-end align-items-center ">
                 <router-link :to="{ path: '/tabla' }" class="btn btn-info">
                   <i class="fa-solid fa-arrow-left"></i> Ingresar
                 </router-link>
               </div>
             </div>
-
           </div>
         </div>
       </div>
