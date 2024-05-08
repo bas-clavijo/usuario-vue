@@ -13,7 +13,7 @@
             </div>
 
             <!-- Columna para los campos de entrada de datos del usuario -->
-            <div class="col-lg-5 text-center">
+            <div class="col-lg-5 offset-lg-2 py-5 text-center">
               <div>
                 <img height="50" width="50" :src="require('@/assets/logo.png')" alt="">
               </div>
@@ -32,7 +32,7 @@
                 <input type="password" id="contraseña" placeholder="Contraseña" class="form-control">
               </div>
               <!-- Botón para ingresar -->
-              <div class="col-md-100 d-flex justify-content-end align-items-center ">
+              <div class="col-md-100 d-flex justify-content-end align-items-center py-2">
                 <router-link :to="{ path: '/tabla' }" class="btn btn-info">
                   <i class="fa-solid fa-arrow-left"></i> Ingresar
                 </router-link>
