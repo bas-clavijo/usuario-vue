@@ -30,7 +30,7 @@
               <!-- Botón para ingresar -->
               <div class="d-grid gap-2">
                 <router-link :to="{ path: '/tabla' }" class="btn btn-success">
-                  <i class="fa-solid fa-arrow-left"></i> Ingresar
+                  <i class="fa-solid"></i> Ingresar
                 </router-link>
               </div>
             </div>
